@@ -21,16 +21,16 @@ resources:
       cpu: 100m
       memory: 200Mi
 tests:
-- as: poc-tests
+- as: fakeaddon-rosa-poc
   cron: 0 12 * * 6
   remote_api: true
   steps:
     cluster_profile: aws-managed-cspi-qe
     env:
-      ADDON1_CONFIG: dbaas-operator
+      ADDON1_CONFIG: test-fake-qe
       API_HOST: stage
       CHANNEL_GROUP: candidate
-      CLUSTER_NAME: rdbaas-add-412
+      CLUSTER_NAME: fake-add-412
       OPENSHIFT_VERSION: "4.12"
       PARALLEL: "true"
     test:
@@ -38,7 +38,7 @@ tests:
     - ref: addon-uninstall
     workflow: rosa-aws-sts
 zz_generated_metadata:
-  branch: rdbaas-operator-addon
+  branch: test-fake-qe-operator-addon
   org: CSPI-QE
   repo: MSI
   variant: v4.12

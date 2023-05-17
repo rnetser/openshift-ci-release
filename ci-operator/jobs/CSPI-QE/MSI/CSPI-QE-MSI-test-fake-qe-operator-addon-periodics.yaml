@@ -6,7 +6,7 @@ periodics:
   decoration_config:
     skip_cloning: true
   extra_refs:
-  - base_ref: rdbaas-operator-addon
+  - base_ref: test-fake-qe-operator-addon
     org: CSPI-QE
     repo: MSI
   labels:
@@ -16,7 +16,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-CSPI-QE-MSI-rdbaas-operator-addon-v4.12-poc-tests
+  name: periodic-ci-CSPI-QE-MSI-test-fake-qe-operator-addon-v4.12-fakeaddon-rosa-poc
   prowjob_defaults:
     tenant_id: gangway-api
   spec:
@@ -27,8 +27,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/poc-tests-cluster-profile
-      - --target=poc-tests
+      - --secret-dir=/usr/local/fakeaddon-rosa-poc-cluster-profile
+      - --target=fakeaddon-rosa-poc
       - --variant=v4.12
       command:
       - ci-operator
@@ -45,7 +45,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/poc-tests-cluster-profile
+      - mountPath: /usr/local/fakeaddon-rosa-poc-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
